@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery.min.js"></script>
+    <script src="lightbox.js"></script>
+    <style>
+        .container .lb-img {
+            float: left;
+            width: 200px;
+            margin-left: 20px;
+            cursor: pointer;
+        }
+        .lb-img img {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="lb-img">
+        <img src="img/1.jpg">
+    </div>
+    <div class="lb-img">
+        <img src="img/2.jpg">
+    </div>
+    <div class="lb-img">
+        <img src="img/4.jpg">
+    </div>
+</div>
+
+<script>
+    $(function(){
+        var light = new LightBox();
+    });
+</script>
+</body>
+</html>
