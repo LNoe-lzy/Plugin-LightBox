@@ -10,13 +10,43 @@
         this.mask = '<div id="lb-mask"></div>';
         //创建图片显示区域节点
         this.popup = '<div id="lb-popup"></div>';
+        this.lbImg = $('.lb-img');
+        this.lbImg.each(function () {
+            var that = $(this),
+                path = that.attr('data-src');
+            var myImage = (function () {
+                var imgNode = $('<img>');
+                imgNode.appendTo(that);
+                return {
+                    setSrc: function (src) {
+                        imgNode.attr({
+                            src: src
+                        });
+                    }
+                }
+            })();
+
+            var proxyImage = (function () {
+                var img = new Image;
+                img.onload = function () {
+                    myImage.setSrc(this.src);
+                };
+                return {
+                    setSrc: function (src) {
+                        img.src = src;
+                    }
+                }
+            })();
+
+            proxyImage.setSrc(path);
+        });
         this.img = $('.lb-img img');
         this.img.click(function(){
             var imgObj = $(this);
             self.showMaskAndPop(imgObj);
             $('#lb-mask').click(function(){
                 self.hideMaskAndPop();
-            })
+            });
         });
     };
 
